@@ -5,34 +5,70 @@
              Title="FinalPage">
 
     <Grid>
-        <Image Source="bck02.jpg" 
+        <Image Source="bck03.jpg" 
                Aspect="AspectFill" 
                HorizontalOptions="Fill" 
                VerticalOptions="Fill"/>
 
-        <VerticalStackLayout VerticalOptions="Center" 
-                             HorizontalOptions="Center" 
-                             Spacing="20"
-                             Padding="30">
+        <Grid VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
 
-            <Label Text="¡FIN DE LA PARTIDA!"
-                   FontSize="28"
-                   FontAttributes="Bold"
-                   TextColor="Black"
-                   HorizontalOptions="Center" />
+            <Border BackgroundColor="#CCFFFFFF"
+                    Stroke="#33000000"
+                    StrokeThickness="1"
+                    Padding="30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
 
-            <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
-                <Label Text="El ganador es:" 
-                       FontSize="20" 
-                       TextColor="Black"/>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12"/>
+                </Border.StrokeShape>
 
-                <Label x:Name="LabelGanador" 
-                       Text="Ganador" 
-                       FontSize="20" 
-                       FontAttributes="Bold" 
-                       TextColor="DarkGreen"/>
-            </HorizontalStackLayout>
+                <VerticalStackLayout Spacing="20">
 
-        </VerticalStackLayout>
+                    <Label Text="¡FIN DE LA PARTIDA!"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center" />
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                        <Label Text="El ganador es:" 
+                               FontSize="20" 
+                               TextColor="Black"/>
+
+                        <Label x:Name="LabelGanador" 
+                               Text="Ganador" 
+                               FontSize="20" 
+                               FontAttributes="Bold" 
+                               TextColor="DarkGreen"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                        <Label Text="Disparos realizados por ti:" 
+                               FontSize="16" 
+                               TextColor="Black"/>
+
+                        <Label x:Name="LabelDisparos" 
+                               Text="0" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="Navy"/>
+                    </HorizontalStackLayout>
+
+                    <!--Botón para empezar nueva partida.-->
+                    <Button x:Name="NuevaPartida"
+                            BackgroundColor="GreenYellow"
+                            Text="Nueva Partida"
+                            Clicked="OnNewGame"/>
+
+                    <Button x:Name="Salir"
+                            BackgroundColor="Red"
+                            Text="Salir"
+                            Clicked="OnExit"/>
+
+                </VerticalStackLayout>
+            </Border>
+
+        </Grid>
     </Grid>
 </ContentPage>

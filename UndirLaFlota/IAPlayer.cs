@@ -21,6 +21,13 @@ namespace UndirLaFlota
         #endregion
 
         #region Métodos Propios
+        /// <summary>
+        /// Método que gestiona la coordenada donde va a disparar la IA.
+        /// Si no tiene ningún barco detectado, dispara de manera aleatoria.
+        /// Si tiene un barco detectado, intenta seguir las casillas colindantes hasta hundirlo entero.
+        /// </summary>
+        /// <param name="boardPlayer01"></param>
+        /// <returns></returns>
         public Tuple<int, int> IAShoot(Tablero boardPlayer01)
         {
             int row = -1;
@@ -116,7 +123,7 @@ namespace UndirLaFlota
         }
 
         /// <summary>
-        /// 
+        /// Método que guarda el resultado del último disparo que hace la IA
         /// </summary>
         /// <param name="result"></param>
         /// <param name="row"></param>

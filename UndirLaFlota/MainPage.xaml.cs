@@ -12,6 +12,9 @@ public partial class MainPage : ContentPage
     private int sunkenBoatsPlayer02 = 0;
     private int lostBoatsPlayer01 = 5;
     private int lostBoatsPlayer02 = 5;
+
+    private int playerCounterShots = 0;
+    private int IACounterShots = 0;
     #endregion
 
     #region Constructor MainPage
@@ -180,9 +183,11 @@ public partial class MainPage : ContentPage
 
         if (board == gameManager.BoardPlayer01)
         {
-            await DisplayAlert("Atención", "¡No te dispares a ti mismo!", "OK");
+            await DisplayAlert("Inválido", "¡No te dispares a ti mismo!", "OK");
             return;
         }
+
+        playerCounterShots++;
 
         string? result = board.Jugada(row, column);
         if (result == null) return;
@@ -206,7 +211,7 @@ public partial class MainPage : ContentPage
                 break;
             case "Partida finalizada":
                 SinkBoatPlayer(board);
-                await Navigation.PushAsync(new FinalPage(LabelNombreJugador.Text));
+                await Navigation.PushAsync(new FinalPage(LabelNombreJugador.Text, playerCounterShots, LabelNombreJugador.Text));
                 //await DisplayAlert("Partida", "¡Partida finalizada!", "OK");
                 break;
         }
@@ -255,7 +260,7 @@ public partial class MainPage : ContentPage
             {
                 SinkBoatIA();
                 await DisplayAlert("Derrota", "La IA ha hundido tu flota.", "OK");
-                await Navigation.PushAsync(new FinalPage("Jugador 2"));
+                await Navigation.PushAsync(new FinalPage("Jugador 2", playerCounterShots, LabelNombreJugador.Text));
                 return;
             }
 
