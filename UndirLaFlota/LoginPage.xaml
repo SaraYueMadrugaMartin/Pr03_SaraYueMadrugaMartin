@@ -4,20 +4,39 @@
              x:Class="UndirLaFlota.LoginPage"
              Title="LoginPage">
 
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <Grid>
 
-        <Entry x:Name="NombrePlayer01"
-               PlaceholderColor="HotPink"
-               Placeholder="Introduce tu Nombre"/>
+        <Image Source="bck01.jpg" 
+               Aspect="AspectFill" 
+               HorizontalOptions="Fill" 
+               VerticalOptions="Fill"/>
 
-        <Button x:Name="BotonValidar"
-                VerticalOptions="End"
-                Text="Validar"
-                BackgroundColor="Chartreuse"
-                Clicked="OnValidateUser"/>
-    </VerticalStackLayout>
+        <Grid RowDefinitions="*, Auto, *" Padding="40">
+
+            <Label Grid.Row="0"
+                   Text="Hundir la flota"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="24"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+
+            <VerticalStackLayout Grid.Row="1" Spacing="10">
+                <Entry x:Name="NombrePlayer01"
+                       PlaceholderColor="HotPink"
+                       Placeholder="Introduce tu Nombre"
+                       BackgroundColor="White"
+                       TextColor="Black"/>
+            </VerticalStackLayout>
+
+            <Button Grid.Row="2"
+                    x:Name="BotonValidar"
+                    VerticalOptions="End"
+                    Text="Validar"
+                    BackgroundColor="LightGreen"
+                    TextColor="Black"
+                    Clicked="OnValidateUser"/>
+        </Grid>
+
+    </Grid>
 </ContentPage>

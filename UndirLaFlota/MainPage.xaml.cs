@@ -15,7 +15,7 @@ public partial class MainPage : ContentPage
     #endregion
 
     #region Constructor MainPage
-    public MainPage()
+    public MainPage(string playerName)
     {
         InitializeComponent();
 
@@ -26,12 +26,22 @@ public partial class MainPage : ContentPage
         CounterLostBoatsPlayer01.Text = "5";
         CounterLostBoatsPlayer02.Text = "5";
 
-        InitializeBoard(TableroGridPlayer01, gameManager.BoardPlayer01, "Jugador 1");
+        LabelNombreJugador.Text = playerName;
+
+        InitializeBoard(TableroGridPlayer01, gameManager.BoardPlayer01, playerName);
         InitializeBoard(TableroGridPlayer02, gameManager.BoardPlayer02, "Jugador 2");
     }
     #endregion
 
     #region Métodos Propios
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        await Task.Delay(100);
+
+        await DisplayAlert("¡Bienvenido!", "Por favor, coloca tus barcos en tu tablero antes de comenzar.", "Aceptar");
+    }
     /// <summary>
     /// Ejecuta la acción del botón de confirmación de barcos.
     /// </summary>
@@ -196,7 +206,7 @@ public partial class MainPage : ContentPage
                 break;
             case "Partida finalizada":
                 SinkBoatPlayer(board);
-                await Navigation.PushAsync(new FinalPage());
+                await Navigation.PushAsync(new FinalPage(LabelNombreJugador.Text));
                 //await DisplayAlert("Partida", "¡Partida finalizada!", "OK");
                 break;
         }
@@ -245,6 +255,7 @@ public partial class MainPage : ContentPage
             {
                 SinkBoatIA();
                 await DisplayAlert("Derrota", "La IA ha hundido tu flota.", "OK");
+                await Navigation.PushAsync(new FinalPage("Jugador 2"));
                 return;
             }
 

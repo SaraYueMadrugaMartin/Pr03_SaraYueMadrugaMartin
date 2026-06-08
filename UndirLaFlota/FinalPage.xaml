@@ -3,10 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UndirLaFlota.FinalPage"
              Title="FinalPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <Grid>
+        <Image Source="bck02.jpg" 
+               Aspect="AspectFill" 
+               HorizontalOptions="Fill" 
+               VerticalOptions="Fill"/>
+
+        <VerticalStackLayout VerticalOptions="Center" 
+                             HorizontalOptions="Center" 
+                             Spacing="20"
+                             Padding="30">
+
+            <Label Text="¡FIN DE LA PARTIDA!"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Center" />
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                <Label Text="El ganador es:" 
+                       FontSize="20" 
+                       TextColor="Black"/>
+
+                <Label x:Name="LabelGanador" 
+                       Text="Ganador" 
+                       FontSize="20" 
+                       FontAttributes="Bold" 
+                       TextColor="DarkGreen"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

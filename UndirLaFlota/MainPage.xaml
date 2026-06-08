@@ -3,70 +3,98 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UndirLaFlota.MainPage">
 
-    <ScrollView>
-        <!--Contenedor para ambos tableros.-->
-        <Grid ColumnDefinitions="*,*"
-              RowDefinitions="Auto,*,Auto"
-              Padding="10"
-              RowSpacing="10"
-              ColumnSpacing="20">
+    <Grid>
 
-            <!--Tablero del Jugador 1-->
-            <VerticalStackLayout Grid.Row="1"
-                                 Grid.Column="0"
-                                 Spacing="15"
-                                 HorizontalOptions="Center">
-                
-                <Label Text="Jugador 1"
-                       FontSize="15"
-                       HorizontalOptions="Center"/>
-                
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-                    <Label Text="Barcos hundidos del oponente:" FontSize="13" TextColor="Gray"/>
-                    <Label x:Name="CounterBoatsPlayer01" Text="0" FontSize="13" FontAttributes="Bold" TextColor="Green"/>
-                </HorizontalStackLayout>
+        <Image Source="bck02.jpg" 
+               Aspect="AspectFill" 
+               HorizontalOptions="Fill" 
+               VerticalOptions="Fill"/>
 
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-                    <Label Text="Barcos propios en pie:" FontSize="13" TextColor="Gray"/>
-                    <Label x:Name="CounterLostBoatsPlayer01" Text="0" FontSize="13" FontAttributes="Bold" TextColor="Red"/>
-                </HorizontalStackLayout>
+        <ScrollView>
+            <!--Contenedor para ambos tableros.-->
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="Auto,*,Auto"
+                  Padding="10"
+                  RowSpacing="10"
+                  ColumnSpacing="20">
 
-                <Grid x:Name="TableroGridPlayer01"
-                      HorizontalOptions="Center"
-                      VerticalOptions="Center"/>
-            </VerticalStackLayout>
+                <!--Tablero del jugador 1.-->
+                <VerticalStackLayout Grid.Row="1"
+                                     Grid.Column="0"
+                                     Spacing="15"
+                                     HorizontalOptions="Center">
 
-            <!--Tablero del jugador 2-->
-            <VerticalStackLayout Grid.Row="1"
-                                 Grid.Column="1"
-                                 Spacing="15"
-                                 HorizontalOptions="Center">
+                    <Label x:Name="LabelNombreJugador"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="Black" 
+                           HorizontalOptions="Center"/>
 
-                <Label Text="Jugador 2"
-                       FontSize="15"
-                       HorizontalOptions="Center"/>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label Text="Barcos hundidos del oponente:" FontSize="13" TextColor="Black"/>
+                        <Label x:Name="CounterBoatsPlayer01" Text="0" FontSize="13" FontAttributes="Bold" TextColor="DarkGreen"/>
+                    </HorizontalStackLayout>
 
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-                    <Label Text="Barcos hundidos del oponente:" FontSize="13" TextColor="Gray"/>
-                    <Label x:Name="CounterBoatsPlayer02" Text="0" FontSize="13" FontAttributes="Bold" TextColor="Green"/>
-                </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label Text="Barcos propios en pie:" FontSize="13" TextColor="Black"/>
+                        <Label x:Name="CounterLostBoatsPlayer01" Text="0" FontSize="13" FontAttributes="Bold" TextColor="Red"/>
+                    </HorizontalStackLayout>
 
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
-                    <Label Text="Barcos propios en pie:" FontSize="13" TextColor="Gray"/>
-                    <Label x:Name="CounterLostBoatsPlayer02" Text="0" FontSize="13" FontAttributes="Bold" TextColor="Red"/>
-                </HorizontalStackLayout>
+                    <Label Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           Text="Flota requerida: 5 barcos de tamaños 6, 5, 3, 3 y 2 casillas."
+                           FontSize="14"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           Margin="0,5,0,5"/>
 
-                <Grid x:Name="TableroGridPlayer02"
-                      HorizontalOptions="Center"
-                      VerticalOptions="Center"/>
-            </VerticalStackLayout>
+                    <Grid x:Name="TableroGridPlayer01"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"/>
+                </VerticalStackLayout>
 
-            <!--Botón para confirmar posiciones escogidas por el jugador 1-->
-            <Button Grid.Row="2"
-                    Grid.ColumnSpan="2"
-                    Text="Aceptar colocación"
-                    HorizontalOptions="Center"
-                    Clicked="OnAceptarClicked"/>
-        </Grid>
-    </ScrollView>
+                <VerticalStackLayout Grid.Row="1"
+                                     Grid.Column="1"
+                                     Spacing="15"
+                                     HorizontalOptions="Center">
+                    
+                    <!--Tablero del jugador 2.-->
+                    <Label Text="Jugador 2"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="Black" 
+                           HorizontalOptions="Center"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label Text="Barcos hundidos del oponente:" FontSize="13" TextColor="Black"/>
+                        <Label x:Name="CounterBoatsPlayer02" Text="0" FontSize="13" FontAttributes="Bold" TextColor="DarkGreen"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                        <Label Text="Barcos propios en pie:" FontSize="13" TextColor="Black"/>
+                        <Label x:Name="CounterLostBoatsPlayer02" Text="0" FontSize="13" FontAttributes="Bold" TextColor="Red"/>
+                    </HorizontalStackLayout>
+
+                    <Label Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           Text="Flota requerida: 5 barcos de tamaños 6, 5, 3, 3 y 2 casillas."
+                           FontSize="14"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           Margin="0,5,0,5"/>
+
+                    <Grid x:Name="TableroGridPlayer02"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <Button Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Aceptar colocación"
+                        BackgroundColor="LightGrey"
+                        HorizontalOptions="Center"
+                        Clicked="OnAceptarClicked"/>
+            </Grid>
+        </ScrollView>
+    </Grid>
 </ContentPage>
